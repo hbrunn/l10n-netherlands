@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<data>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <div name="integration" position="after">
+                <h2>Nmbrs Integration</h2>
+                <div class="row mt16 o_settings_container" name="nmbrs_base">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane" />
+                        <div class="o_setting_right_pane">
+                            <label for="nmbrs_base_api_domain" class="w-100" />
+                            <field name="nmbrs_base_api_domain" class="w-100" />
+                            <div class="text-muted">
+                                You need to <a
+                                    href="https://support.nmbrs.com/hc/en-us/articles/360013305712-How-to-get-an-API-token-"
+                                    target="_blank"
+                                >create an access token</a> in Nmbrs to be able to use the integration
+                            </div>
+                            <label for="nmbrs_base_api_username" class="w-100" />
+                            <field name="nmbrs_base_api_username" class="w-100" />
+                            <label for="nmbrs_base_api_key" class="w-100" />
+                            <field name="nmbrs_base_api_key" class="w-100" />
+                            <button
+                                name="action_nmbrs_base_fetch_master_data"
+                                type="object"
+                                class="btn btn-link"
+                            ><i
+                                    class="fa fa-fw o_button_icon fa-arrow-right"
+                                />Fetch Master Data</button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="nmbrs_base_api_sandbox" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="nmbrs_base_api_sandbox" />
+                            <div class="text-muted">
+                                This allows you to test the integration with the <a
+                                    href="https://support.nmbrs.nl/hc/articles/204054506-Sandbox"
+                                    target="_blank"
+                                >sandbox</a> without affecting your production environment
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+</data>

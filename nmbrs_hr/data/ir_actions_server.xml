@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<data>
+    <record id="action_push_employee" model="ir.actions.server">
+        <field name="name">Push to Nmbrs</field>
+        <field name="model_id" ref="hr.model_hr_employee" />
+        <field name="state">code</field>
+        <field name="code">records._nmbrs_hr_push()</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee" />
+        <field name="binding_type">action</field>
+        <field name="groups_id" eval="[Command.link(ref('nmbrs_base.group_user'))]" />
+    </record>
+</data>
