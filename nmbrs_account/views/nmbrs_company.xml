@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<data>
+    <record id="view_nmbrs_company_form" model="ir.ui.view">
+        <field name="model">nmbrs.company</field>
+        <field name="inherit_id" ref="nmbrs_base.view_nmbrs_company_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    type="object"
+                    name="action_nmbrs_run_import_wizard"
+                    string="Import Runs"
+                    icon="fa-cogs"
+                />
+            </div>
+            <group name="main" position="after">
+                <label for="nmbrs_run_ids" class="w-100" />
+                <field name="nmbrs_run_ids">
+                    <tree>
+                        <field name="name" />
+                        <field name="nmbrs_number" />
+                        <field name="nmbrs_is_locked" />
+                        <field name="move_id" />
+                        <button
+                            attrs="{'invisible': ['|', ('move_id', '!=', False), ('nmbrs_is_locked', '=', False)]}"
+                            type="object"
+                            name="action_import_move"
+                            string="Import Journal Entry"
+                            class="btn btn-link"
+                        />
+                    </tree>
+                </field>
+                <label for="nmbrs_costcenter_ids" class="w-100" />
+                <field name="nmbrs_costcenter_ids">
+                    <tree>
+                        <field name="name" />
+                        <field name="nmbrs_code" />
+                    </tree>
+                </field>
+            </group>
+        </field>
+    </record>
+</data>

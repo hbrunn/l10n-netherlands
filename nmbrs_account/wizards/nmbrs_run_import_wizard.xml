@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<data>
+    <record id="view_nmbrs_run_import_wizard_form" model="ir.ui.view">
+        <field name="model">nmbrs.run.import.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+            <div>
+                Import all runs from a year for a company
+            </div>
+            <group>
+                <field
+                        name="nmbrs_company_id"
+                        invisible="context.get('default_nmbrs_company_id')"
+                    />
+                <field name="year" />
+            </group>
+            <footer>
+                <button
+                        type="object"
+                        name="action_import"
+                        class="btn btn-primary"
+                        string="Import"
+                    />
+                <button special="cancel" class="btn btn-secondary" string="Cancel" />
+            </footer>
+            </form>
+        </field>
+    </record>
+</data>

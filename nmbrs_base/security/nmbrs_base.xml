@@ -20,5 +20,10 @@
     <record id="base.user_admin" model="res.users">
         <field name="groups_id" eval="[Command.link(ref('group_manager'))]" />
     </record>
+    <record id="rule_nmbrs_company" model="ir.rule">
+        <field name="name">Nmbrs company multi-company</field>
+        <field name="model_id" ref="model_nmbrs_company" />
+        <field name="domain_force">[('company_id', 'in', company_ids + [False])]</field>
+    </record>
 </data>
 </odoo>

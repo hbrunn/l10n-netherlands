@@ -5,7 +5,7 @@ from odoo import models
 
 
 class ResCompany(models.Model):
-    _inherit = ["res.company", "nmbrs_base.config_mixin"]
+    _inherit = ["res.company", "nmbrs.config.mixin"]
     _name = "res.company"
 
     def action_nmbrs_base_fetch_master_data(self):

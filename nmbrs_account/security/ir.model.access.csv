@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nmbrs_costcenter_user,access_nmbrs_costcenter,model_nmbrs_costcenter,nmbrs_base.group_user,1,0,0,0
+access_nmbrs_costcenter_manager,access_nmbrs_costcenter,model_nmbrs_costcenter,nmbrs_base.group_manager,1,1,1,1
+access_nmbrs_run_user,access_nmbrs_run,model_nmbrs_run,nmbrs_base.group_user,1,0,0,0
+access_nmbrs_run_manager,access_nmbrs_run,model_nmbrs_run,nmbrs_base.group_manager,1,1,1,1
+access_nmbrs_run_import_wizard_user,access_nmbrs_run_import_wizard,model_nmbrs_run_import_wizard,nmbrs_base.group_user,1,0,1,0

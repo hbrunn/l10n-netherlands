@@ -6,11 +6,14 @@
         <field name="model">nmbrs.company</field>
         <field name="arch" type="xml">
             <form>
-                <group>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" />
+                <group name="main">
                     <field name="nmbrs_id" />
                     <field name="name" />
                     <field name="company_id" groups="base.group_multi_company" />
                 </group>
+                </sheet>
             </form>
         </field>
     </record>

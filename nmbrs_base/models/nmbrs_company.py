@@ -6,6 +6,7 @@ from odoo import fields, models
 
 class NmbrsComany(models.Model):
     _name = "nmbrs.company"
+    _order = "name"
     _description = "A company in Nmbrs"
 
     nmbrs_id = fields.Integer(string="Nmbrs ID", required=True)

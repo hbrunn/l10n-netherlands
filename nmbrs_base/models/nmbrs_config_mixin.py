@@ -8,8 +8,8 @@ from odoo import _, fields, models
 from ..helpers import raise_nmbrs_error
 
 
-class NmbrsBaseConfigMixin(models.AbstractModel):
-    _name = "nmbrs_base.config_mixin"
+class NmbrsConfigMixin(models.AbstractModel):
+    _name = "nmbrs.config.mixin"
     _description = "Mixin for models needing a Nmbrs configuration"
 
     nmbrs_base_api_domain = fields.Char("Domain", groups="nmbrs_base.group_manager")
@@ -22,6 +22,11 @@ class NmbrsBaseConfigMixin(models.AbstractModel):
     nmbrs_base_api_sandbox = fields.Boolean(
         "Use sandbox", groups="nmbrs_base.group_manager", default=True
     )
+
+    def write(self, vals):
+        if vals.get("nmbrs_base_api_domain"):
+            vals["nmbrs_base_api_domain"] = vals["nmbrs_base_api_domain"].split(".")[0]
+        return super().write(vals)
 
     def _nmbrs_base_get_client(self, service):
         self.ensure_one()
@@ -48,7 +53,7 @@ class NmbrsBaseConfigMixin(models.AbstractModel):
         self.env.registry._Registry__cache[cache_key] = client
         return client
 
-    def action_nmbrs_base_fetch_master_data(self):
+    def _action_nmbrs_base_fetch_master_data(self):
         client = self._nmbrs_base_get_client("CompanyService")
         with raise_nmbrs_error():
             companies = client.service.List_GetAll()
@@ -61,10 +66,15 @@ class NmbrsBaseConfigMixin(models.AbstractModel):
                 records += existing
             else:
                 records += NmbrsCompany._create_from_nmbrs(company)
+        return records
+
+    def action_nmbrs_base_fetch_master_data(self):
+        records = self._action_nmbrs_base_fetch_master_data()
 
         return {
             "type": "ir.actions.act_window",
             "name": _("Created/updated Nmbrs companies"),
             "res_model": "nmbrs.company",
             "views": [(False, "tree"), (False, "form")],
+            "domain": [("id", "in", records.ids)],
         }
